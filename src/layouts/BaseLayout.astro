@@ -1,0 +1,18 @@
+---
+// Basic base layout
+import "../styles/global.css";
+const { title, isFullWidth } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main class={isFullWidth ? "full-width" : "content-wrapper"}>
+      <slot />
+    </main>
+  </body>
+</html>
