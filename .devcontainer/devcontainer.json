@@ -16,6 +16,7 @@
     }
   },
 
+  "runArgs": ["-p", "4321:4321"],
   "remoteUser": "node",
   "updateRemoteUserUID": true
 }

@@ -23,6 +23,9 @@
   --ctp-surface0: #ccd0da;
   --ctp-surface1: #bcc0cc;
   --ctp-overlay0: #acb0be;
+
+  /* Apply background color */
+  background-color: var(--ctp-base);
 }
 
 /* AUTOMATIC: Catppuccin Mocha (Dark) */
@@ -48,12 +51,14 @@
     --ctp-surface0: #313244;
     --ctp-surface1: #45475a;
     --ctp-overlay0: #6c7086;
+
+    /* Apply background color */
+    background-color: var(--ctp-base);
   }
 }
 
 /* Apply the colors globally */
 body {
-  background-color: var(--ctp-base);
   color: var(--ctp-text);
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.5;
@@ -72,7 +77,7 @@ body {
 /* RESPONSIVE: On small screens, shrink the gutter */
 @media (max-width: 600px) {
   :root {
-    --page-gutter: 1rem;
+    --page-gutter:1rem;
   }
 }
 
