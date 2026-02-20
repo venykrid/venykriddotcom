@@ -1,18 +1,21 @@
 ---
 // Basic base layout
 import "../styles/global.css";
-const { title, isFullWidth } = Astro.props;
+const { title, coverViewport } = Astro.props;
+const viewportString = coverViewport
+  ? "width=device-width, initial-scale=1, viewport-fit=cover"
+  : "width=device-width, initial-scale=1";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content={viewportString} />
     <title>{title}</title>
   </head>
   <body>
-    <main class={isFullWidth ? "full-width" : "content-wrapper"}>
+    <main>
       <slot />
     </main>
   </body>
