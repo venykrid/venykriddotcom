@@ -12,13 +12,12 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
     <div class="shooting-star" , id="star"></div>
     <div class="hero-content">
       <h1 class="hero-title" id="title" aria-label="venykrid">venykrid</h1>
-      <p class="hero-subtitle">Hello, World!</p>
     </div>
   </section>
   <div class="content-wrapper">
     <p>
-      I'm a Freshman Computer Science student with a focus on security and
-      reliability using modern standards and attention to detail.
+      I'm a Freshman Computer Science student with a focus on security and reliability using modern standards and
+      attention to detail.
     </p>
   </div>
 </BaseLayout>
@@ -162,22 +161,11 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
     }
   }
 
-  .hero-subtitle {
-    margin: 0;
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    color: #e2e8f0;
-    font-weight: 300;
-  }
-
   .shooting-star {
     position: absolute;
     width: 150px;
     height: 2px;
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
     transform: rotate(-45deg);
     opacity: 0;
     z-index: 1; /* Changed to 1 so it appears above the image/overlay */
@@ -188,8 +176,7 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
   }
 
   .shooting-star.animate {
-    animation: shoot var(--star-duration, 3s) linear var(--star-delay, 2s)
-      forwards;
+    animation: shoot var(--star-duration, 3s) linear var(--star-delay, 2s) forwards;
   }
 
   @keyframes shoot {

@@ -83,6 +83,11 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* Link colors */
+a {
+  color: var(--ctp-blue);
+}
+
 /* Utility Class for generic cards/containers */
 .card {
     background-color: var(--ctp-mantle);
@@ -119,4 +124,8 @@ body {
 .full-width {
   max-width: 100%;
   padding-inline: 0;
+}
+
+footer {
+  margin-top: 2rem;
 }
