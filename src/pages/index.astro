@@ -6,12 +6,12 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
 ---
 
 <BaseLayout title="venykrid.com" coverViewport={true}>
-  <section class="hero-container">
+  <section class="hero-container" id="hero">
     <Image src={mainHeroImage} alt="Northern lights" class="hero-image" />
     <div class="overlay"></div>
     <div class="shooting-star" , id="star"></div>
     <div class="hero-content">
-      <h1 class="hero-title">venykrid</h1>
+      <h1 class="hero-title" id="title">venykrid</h1>
       <p class="hero-subtitle">Hello, World!</p>
     </div>
   </section>
@@ -46,6 +46,22 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
 
   star?.addEventListener("animationend", fireRandomStar);
   fireRandomStar();
+
+  const hero = document.getElementById("hero");
+  const title = document.getElementById("title");
+
+  hero?.addEventListener("mousemove", (e) => {
+    // 1. Get the viewport dimensions
+    const { innerWidth, innerHeight } = window;
+
+    // 2. Calculate mouse position relative to center (-1 to 1)
+    const x = (e.clientX / innerWidth - 0.5) * 2;
+    const y = (e.clientY / innerHeight - 0.5) * 2;
+
+    // 3. Update CSS variables (multiply by max rotation degrees, e.g., 10)
+    title?.style.setProperty("--rot-x", `${y * -15}deg`);
+    title?.style.setProperty("--rot-y", `${x * 15}deg`);
+  });
 </script>
 
 <style>
@@ -104,6 +120,14 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    --rot-x: 0deg;
+    --rot-y: 0deg;
+
+    /* Add perspective to create depth, then rotate based on JS variables */
+    transform: perspective(1000px) rotateX(var(--rot-x)) rotateY(var(--rot-y));
+    /* Smooth out the movement slightly */
+    transition: transform 0.1s ease-out;
   }
 
   .hero-subtitle {
