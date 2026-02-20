@@ -11,7 +11,7 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
     <div class="overlay"></div>
     <div class="shooting-star" , id="star"></div>
     <div class="hero-content">
-      <h1 class="hero-title" id="title">venykrid</h1>
+      <h1 class="hero-title" id="title" aria-label="venykrid">venykrid</h1>
       <p class="hero-subtitle">Hello, World!</p>
     </div>
   </section>
@@ -50,6 +50,21 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
   const hero = document.getElementById("hero");
   const title = document.getElementById("title");
 
+  if (title) {
+    const text = title.textContent || "";
+    title.textContent = "";
+
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length && title) {
+        title.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, Math.random() * 100 + 60);
+      }
+    }
+    setTimeout(typeWriter, 300);
+  }
+
   hero?.addEventListener("mousemove", (e) => {
     // 1. Get the viewport dimensions
     const { innerWidth, innerHeight } = window;
@@ -59,8 +74,8 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
     const y = (e.clientY / innerHeight - 0.5) * 2;
 
     // 3. Update CSS variables (multiply by max rotation degrees, e.g., 10)
-    title?.style.setProperty("--rot-x", `${y * -15}deg`);
-    title?.style.setProperty("--rot-y", `${x * 15}deg`);
+    title?.style.setProperty("--rot-x", `${y * -10}deg`);
+    title?.style.setProperty("--rot-y", `${x * 10}deg`);
   });
 </script>
 
@@ -113,7 +128,7 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
     font-size: clamp(4rem, 12vw, 8rem);
     font-weight: 800;
     letter-spacing: -0.1em;
-    padding-left: 0.2em;
+    padding-left: 0.3em;
     padding-right: 0.2em;
 
     background: linear-gradient(135deg, #ffffff 0%, #b3b9bfe7 100%);
@@ -128,6 +143,23 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
     transform: perspective(1000px) rotateX(var(--rot-x)) rotateY(var(--rot-y));
     /* Smooth out the movement slightly */
     transition: transform 0.1s ease-out;
+  }
+
+  .hero-title::after {
+    content: "|";
+    -webkit-text-fill-color: #aab0b5c5;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    10%,
+    50% {
+      opacity: 1;
+    }
+    60%,
+    100% {
+      opacity: 0;
+    }
   }
 
   .hero-subtitle {
