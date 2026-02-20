@@ -3,6 +3,8 @@
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
+import ProjectCard from "../components/projectCard.astro";
+import rackImage from "../images/badimageofrack.jpg";
 ---
 
 <BaseLayout title="venykrid.com" coverViewport={true}>
@@ -16,9 +18,21 @@ import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
   </section>
   <div class="content-wrapper">
     <p>
-      I'm a Freshman Computer Science student with a focus on security and reliability using modern standards and
-      attention to detail.
+      My name is Zach and I'm a Freshman Computer Science student with a focus on security and reliability using modern
+      standards and attention to detail.
     </p>
+    <p>
+      This page serves as my spot to show off my personal projects and document what I've learned so that others <i>
+        (like you!)
+      </i> can learn from it and help try to make the world a better place through technology.
+    </p>
+    <ProjectCard
+      title="Home Lab"
+      description="My home server and network. You're talking to this (or hopefully not its backup) now!"
+      image={rackImage}
+      imageAlt="The mini rack with networking, computers, and storage"
+      link="docs/Venykrid's Home Lab"
+    />
   </div>
 </BaseLayout>
 

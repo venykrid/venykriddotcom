@@ -1,0 +1,72 @@
+---
+// Docs Layout
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ColoredLogo from "../images/logos/logo-x128.webp";
+import Logo from "../images/logos/logo-flatcomp.astro";
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <div class="topnav">
+    <a href="/" class="home-link">
+      <div class="home-button">
+        <Logo class="home logo-flat"/>
+        <Image src={ColoredLogo} alt="Home selected" class="home logo-colored"/>
+      </div>
+    </a>
+  </div>
+
+  <div class="content-wrapper"> 
+    <h1>{title}</h1>
+    <slot />
+  </div>
+</BaseLayout>
+
+<style>
+  .topnav {
+    height: 70px;
+    display: flex;
+    align-items: center; /* Centers the logo vertically */
+    padding: 1rem;
+    overflow: hidden; /* Safety net */
+  }
+
+  .home-link {
+    height: 100%;
+    display: block;
+  }
+
+  .home-button {
+    position: relative;
+    height: 100%; /* Forces container to stay within 3dvh */
+    aspect-ratio: 1 / 1; /* Adjust based on your logo's shape */
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+  .home-button:hover {
+    transform: scale(1.2); /* "The Grow" */
+  }
+
+  .home {
+    height: 100%;
+    width: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .logo-colored {
+    opacity: 0;
+  }
+
+  .home-button:hover .logo-colored {
+    opacity: 1; /* "The Fade into Color" */
+  }
+
+  .home-button:hover .logo-flat {
+    opacity: 0;
+  }
+</style>
