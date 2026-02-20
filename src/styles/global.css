@@ -56,11 +56,27 @@
     background-color: var(--ctp-base);
   }
 }
+/* Fonts */
+@font-face {
+  font-family: 'AdwaitaSans';
+  src: url('/fonts/adwaita-sans-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'AdwaitaMono';
+  src: url('/fonts/adwaita-mono-bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Apply the colors globally */
 body {
   color: var(--ctp-text);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: AdwaitaSans, -apple-system, sans-serif;
   line-height: 1.5;
   margin: 0;
   transition: background-color 0.2s ease, color 0.2s ease;

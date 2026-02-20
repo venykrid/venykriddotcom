@@ -1,10 +1,25 @@
 ---
 // Main page
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
+import "../styles/index.css";
 ---
 
+<section class="hero-container">
+  <Image
+    src={mainHeroImage}
+    alt="Banner image of northern lights"
+    class="hero-image"
+  />
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">venykrid</h1>
+    <p class="hero-subtitle">Hello, World!</p>
+  </div>
+</section>
+
 <BaseLayout title="venykrid.com">
-  <h1>Hello, World!</h1>
   <p>
     I'm a Freshman Computer Science student with a focus on security and
     reliability using modern standards and attention to detail.
