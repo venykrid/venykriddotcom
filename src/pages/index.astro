@@ -4,8 +4,9 @@ import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
 import ProjectCard from "../components/projectCard.astro";
-import rackImage from "../images/homelab.webp";
 import Navbar from "../components/Navbar.astro";
+import rackImage from "../images/homelab.webp";
+import websiteImage from "../images/website.png";
 ---
 
 <BaseLayout title="venykrid.com" coverViewport={true}>
@@ -34,6 +35,13 @@ import Navbar from "../components/Navbar.astro";
       image={rackImage}
       imageAlt="The mini rack with networking, computers, and storage"
       link="docs/homelab"
+    />
+    <ProjectCard
+      title="Website"
+      description="About this site and how I made it with Astro. I would reccomend copying this because it does make it really easy to make really quick and robust pages"
+      image={websiteImage}
+      imageAlt="A screenshot of this page"
+      link="docs/website"
     />
     <p>Hero image by <a href="https://unsplash.com/photos/northern-lights-during-night-time-R3pUGn5YiTg">@marceloquinan on Unsplash</a></p>
   </div>
