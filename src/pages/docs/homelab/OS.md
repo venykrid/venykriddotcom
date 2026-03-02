@@ -1,3 +1,8 @@
+---
+layout: ../../../layouts/DocsLayout.astro
+title: OS
+---
+
 ### Goals
 - Self-updating
 - Supports Docker, Tailscale, etc for contained workflows

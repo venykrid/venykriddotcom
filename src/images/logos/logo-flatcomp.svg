@@ -11,9 +11,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
      id="defs1" /><g
-     id="g41"
+     id="g1"
      style="display:inline"><path
-       style="font-weight:bold;font-size:94.9461px;font-family:'Adwaita Mono';-inkscape-font-specification:'Adwaita Mono Bold';letter-spacing:-8.01688px;fill:#1a1a1a;stroke-width:5.08639"
-       d="M 38.472124,97.831276 21.191935,28.045894 h 11.67837 l 10.159232,46.523588 q 0.474731,2.18376 0.949461,4.36752 0.474731,2.088815 0.949461,4.177629 0.474731,-2.088814 0.949461,-4.177629 0.474731,-2.18376 0.949461,-4.36752 L 56.986614,28.045894 h 11.67837 l -17.28019,69.785382 z m 34.613953,9.589554 v -9.589554 h 41.586393 v 9.589554 z"
-       id="text41"
-       aria-label="V_" /></g></svg>
+       style="font-weight:bold;font-size:94.9461px;font-family:'Adwaita Mono';-inkscape-font-specification:'Adwaita Mono Bold';letter-spacing:-8.01688px;stroke-width:5.08639"
+       d="M 39.206032,90.320786 21.925842,40.948814 h 12.058155 l 10.159232,32.946297 q 0.379785,1.234299 0.759569,2.468598 0.379784,1.234299 0.759569,2.468599 0.379784,-1.2343 0.759569,-2.468599 0.379784,-1.234299 0.759568,-2.468598 L 57.340737,40.948814 H 69.398891 L 52.118702,90.320786 Z m 34.613953,9.589555 v -9.589555 h 41.586395 v 9.589555 z"
+       id="text1"
+       aria-label="v_" /></g></svg>

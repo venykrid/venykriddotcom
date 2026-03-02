@@ -1,3 +1,8 @@
+---
+layout: ../../../layouts/DocsLayout.astro
+title: BTRFS Implementation
+---
+
 ### Why BTRFS?
 - Very scalable across drives — RAID can be enabled and modified on the fly
 	- Adding more drives or replacing a failed one will be very low impact and simple

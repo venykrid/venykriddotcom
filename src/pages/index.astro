@@ -5,9 +5,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import mainHeroImage from "../images/mainHero/mainHeroScaled.webp";
 import ProjectCard from "../components/projectCard.astro";
 import rackImage from "../images/badimageofrack.jpg";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <BaseLayout title="venykrid.com" coverViewport={true}>
+  <Navbar showHome={false} heroMode={true}/>
   <section class="hero-container" id="hero">
     <Image src={mainHeroImage} alt="Northern lights" class="hero-image" />
     <div class="overlay"></div>
@@ -85,10 +87,10 @@ import rackImage from "../images/badimageofrack.jpg";
 
     // 2. Calculate mouse position relative to center (-1 to 1)
     const x = (e.clientX / innerWidth - 0.5) * 2;
-    const y = (e.clientY / innerHeight - 0.5) * 2;
+    const y = (e.clientY / innerHeight - 0.25) * 2;
 
     // 3. Update CSS variables (multiply by max rotation degrees, e.g., 10)
-    title?.style.setProperty("--rot-x", `${y * -10}deg`);
+    title?.style.setProperty("--rot-x", `${y * -20}deg`);
     title?.style.setProperty("--rot-y", `${x * 10}deg`);
   });
 </script>
@@ -119,7 +121,7 @@ import rackImage from "../images/badimageofrack.jpg";
 
   /* Overlay for contrast */
   .overlay {
-    background-color: rgba(0, 0, 0, 0.5); /* 50% opacity black */
+    background-color: rgba(0, 0, 0, 0.4); /* 40% opacity black */
     z-index: 1;
   }
 
