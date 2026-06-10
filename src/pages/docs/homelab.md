@@ -3,26 +3,20 @@ layout: ../../layouts/DocsLayout.astro
 title: Venykrid's Home Lab
 ---
 
-### Hardware
-- [Rack Design]() — A robust custom 10" rack
-- [Drive Bay]() — A cost effective custom bay supporting 2 drives in a 1U space
-
-### Software
-- [OS]() — Selection and deployment
-- [BTRFS Implementation]()
-- [Nextcloud]() — NAS setup and management
-- [Jellyfin]() — Media server deployment
-- [Minecraft]() — Game server deployment
+My homelab is the product of heavy planning, research, and adaptation as I learned how to build a proper server enviroment and a secure network
 
 ### Goals
-##### Stage 1 — Migration and the Basics
-- [ ] Set up drives
-- [ ] Repair the Mini PC
-- [ ] Build the rack
-- [ ] Set up OpenSUSE MicroOS
-- [ ] Migrate Nextcloud, Jellyfin, Minecraft, 2 websites to Docker containers
+- Reliable and performant networking and self hosted services
+- Value focused components, the best I can get without blowing the bank
 
-##### Future plans
-- Off-site backup
-- Control+info screen
-- UPS
+### Hardware
+- [Rack Design](/docs/homelab/rackdesign): 10" custom rack made with 2020 aluminum extrusion and a 3d printer
+- [Network](/docs/homelab/network): Ubiquiti equipment, Tailscale, and Cloudflare and how I manage my network to keep these services secure and accessible
+- [Storage](/docs/homelab/storage): BTRFS RAID 1, TPM-backed encryption, and offsite backups
+- Server: Nothing special, just an OptiPlex 3080 Micro that I picked up at a garage sale with an m.2 i226-v network card 
+
+### Software
+- [OS](/docs/homelab/os): OpenSUSE MicroOS and how I manage full disk encryption and automatic seamless updates with no intervention on a server
+- [Podman](/docs/homelab/podman): Runs all my applications in containers with hardened permissions, all integrated with Systemd for easy monitoring and control
+  - [Minecraft](/docs/homelab/minecraft): Fabric Minecraft server hosted through Cloudflare
+  - Jellyfin: Self-hosted ome video streaming platform
