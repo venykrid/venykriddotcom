@@ -190,11 +190,14 @@ const title = frontmatter?.title || Astro.props.title;
 
   /* Code blocks & inline code */
   .docs-content :not(pre) > code {
-    background-color: var(--ctp-surface0);
+    font-family: ui-monospace, 'AdwaitaMono', monospace;
+    font-size: 0.95em;
+    background-color: var(--ctp-mantle);
     color: var(--ctp-text);
-    padding: 0.15em 0.4em;
-    border-radius: 5px;
-    font-size: 0.9em;
+    border: 1px solid var(--ctp-surface0);
+    padding: 0.1em 0.38em;
+    border-radius: 6px;
+    overflow-wrap: anywhere;
   }
 
   .docs-content pre {
@@ -500,7 +503,7 @@ const title = frontmatter?.title || Astro.props.title;
   const COLLAPSE_LINE_THRESHOLD = 12;
 
   for (const pre of document.querySelectorAll(".docs-content pre")) {
-    if (pre.querySelector(".code-copy-btn")) continue;
+    if (!(pre instanceof HTMLPreElement) || pre.querySelector(".code-copy-btn")) continue;
 
     const lang = pre.getAttribute("data-language");
     const defaultLabel = lang && lang !== "plaintext" ? lang : "copy";
@@ -521,7 +524,7 @@ const title = frontmatter?.title || Astro.props.title;
     btn.append(label, icon);
     pre.appendChild(btn);
 
-    let resetTimer: number | undefined;
+    let resetTimer = 0;
     btn.addEventListener("click", async () => {
       const lines = pre.querySelectorAll("code .line");
       const code = pre.querySelector("code");
@@ -606,9 +609,10 @@ const title = frontmatter?.title || Astro.props.title;
   }
 
   for (const details of document.querySelectorAll("details.callout")) {
+    if (!(details instanceof HTMLDetailsElement)) continue;
     const summary = details.querySelector(":scope > summary.callout-title");
-    const content = details.querySelector(":scope > .callout-content") as HTMLElement | null;
-    if (!summary || !content) continue;
+    const content = details.querySelector(":scope > .callout-content");
+    if (!(summary instanceof HTMLElement) || !(content instanceof HTMLElement)) continue;
 
     summary.addEventListener("click", (event) => {
       event.preventDefault();
