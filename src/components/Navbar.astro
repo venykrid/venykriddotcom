@@ -25,6 +25,8 @@ const navItems: NavItem[] = [];
 const folders: Record<string, { label: string; url: string }[]> = {};
 const rootLinks: Record<string, { label: string; url: string }> = {};
 
+const formatLabel = (name: string) => name.replace(/_/g, " ");
+
 for (const path in pages) {
   const relativePath = path.replace("../pages/docs/", "");
   const parts = relativePath.split("/");
@@ -36,11 +38,11 @@ for (const path in pages) {
 
   if (parts.length === 1) {
     const fileName = parts[0].replace(/\.(md|mdx|astro)$/, "");
-    rootLinks[fileName] = { label: fileName, url };
+    rootLinks[fileName] = { label: formatLabel(fileName), url };
   } else if (parts.length === 2) {
     const folderName = parts[0];
     const fileName = parts[1].replace(/\.(md|mdx|astro)$/, "");
-    const label = fileName === "index" ? "Overview" : fileName;
+    const label = fileName === "index" ? "Overview" : formatLabel(fileName);
 
     if (!folders[folderName]) folders[folderName] = [];
     folders[folderName].push({ label, url });
@@ -64,7 +66,7 @@ for (const key of allKeys) {
   else if (folder) {
     navItems.push({
       type: "dropdown",
-      label: key,
+      label: formatLabel(key),
       items: folder.sort((a, b) => a.label.localeCompare(b.label)),
     });
   } 

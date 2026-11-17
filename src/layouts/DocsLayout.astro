@@ -4,9 +4,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/Navbar.astro";
 const { frontmatter } = Astro.props;
 const title = frontmatter?.title || Astro.props.title;
+const description = frontmatter?.description || Astro.props.description;
 ---
 
-<BaseLayout title={title}>
+<BaseLayout title={title} description={description}>
   <Navbar />
   <div class="content-wrapper docs-content"> 
     <h1>{title}</h1>

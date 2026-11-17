@@ -1,10 +1,17 @@
 ---
 // Basic base layout
 import "../styles/global.css";
-const { title, coverViewport } = Astro.props;
+const {
+  title,
+  description = "My place for projects and technical documentation.",
+  coverViewport,
+} = Astro.props;
 const viewportString = coverViewport
   ? "width=device-width, initial-scale=1, viewport-fit=cover"
   : "width=device-width, initial-scale=1";
+const canonicalURL = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site)
+  : Astro.url;
 ---
 
 <!doctype html>
@@ -12,6 +19,12 @@ const viewportString = coverViewport
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content={viewportString} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
     <link rel="icon" href="/favicon.ico?v=3" />
     <title>{title}</title>
   </head>
@@ -21,8 +34,14 @@ const viewportString = coverViewport
     </main>
     <footer class="content-wrapper">
       <p>
-        <a href="https://github.com/venykrid/venykriddotcom/">Source code proudly available</a> under the <a href="https://github.com/venykrid/venykriddotcom/blob/main/LICENSE">GPLv3 license</a>. 
-        Content and documentation licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> unless otherwise noted.
+        <a href="https://github.com/venykrid/venykriddotcom/"
+          >Source code proudly available</a
+        > under the <a
+          href="https://github.com/venykrid/venykriddotcom/blob/main/LICENSE"
+          >GPLv3 license</a
+        >. Content and documentation licensed under <a
+          href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a
+        > unless otherwise noted.
       </p>
     </footer>
   </body>

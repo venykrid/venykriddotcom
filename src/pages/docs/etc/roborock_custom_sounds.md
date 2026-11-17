@@ -1,6 +1,7 @@
 ---
 layout: ../../../layouts/DocsLayout.astro
 title: How to Customize the Sounds on a Roborock Vacuum
+description: Guide to replacing the default voice lines on a rooted Roborock vacuum using Valetudo and a bind mount.
 ---
 
 ![Roborock Vacuum Banner](../../../images/docs/roborock/banner.png)
