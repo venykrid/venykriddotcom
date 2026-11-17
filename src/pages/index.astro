@@ -58,58 +58,67 @@ import websiteImage from "../images/website.png";
 </BaseLayout>
 
 <script>
-  const star = document.getElementById("star");
+  document.addEventListener("astro:page-load", () => {
+    const star = document.getElementById("star");
+    const hero = document.getElementById("hero");
+    const title = document.getElementById("title");
+    if (!star && !hero && !title) return;
 
-  function fireRandomStar() {
-    const top = Math.floor(Math.random() * 30) + "vh";
-    const right = Math.floor(Math.random() * 100) + "vw";
-    const angle = Math.random() * 360 + "deg";
-    const duration = Math.random() * 3 + 1 + "s";
-    const delay = Math.random() * 8 + 2 + "s";
+    function fireRandomStar() {
+      const top = Math.floor(Math.random() * 30) + "vh";
+      const right = Math.floor(Math.random() * 100) + "vw";
+      const angle = Math.random() * 360 + "deg";
+      const duration = Math.random() * 3 + 1 + "s";
+      const delay = Math.random() * 8 + 2 + "s";
 
-    star?.style.setProperty("--star-top", top);
-    star?.style.setProperty("--star-right", right);
-    star?.style.setProperty("--star-angle", angle);
-    star?.style.setProperty("--star-duration", duration);
-    star?.style.setProperty("--star-delay", delay);
+      star?.style.setProperty("--star-top", top);
+      star?.style.setProperty("--star-right", right);
+      star?.style.setProperty("--star-angle", angle);
+      star?.style.setProperty("--star-duration", duration);
+      star?.style.setProperty("--star-delay", delay);
 
-    star?.classList.remove("animate");
-    void star?.offsetWidth;
-    star?.classList.add("animate");
-  }
-
-  star?.addEventListener("animationend", fireRandomStar);
-  fireRandomStar();
-
-  const hero = document.getElementById("hero");
-  const title = document.getElementById("title");
-
-  if (title) {
-    const text = title.textContent || "";
-    title.textContent = "";
-
-    let i = 0;
-    function typeWriter() {
-      if (i < text.length && title) {
-        title.textContent += text.charAt(i);
-        i++;
-        setTimeout(typeWriter, Math.random() * 100 + 60);
-      }
+      star?.classList.remove("animate");
+      void star?.offsetWidth;
+      star?.classList.add("animate");
     }
-    setTimeout(typeWriter, 300);
-  }
 
-  hero?.addEventListener("mousemove", (e) => {
-    // 1. Get the viewport dimensions
-    const { innerWidth, innerHeight } = window;
+    if (star && !star.dataset.starInit) {
+      star.dataset.starInit = "true";
+      star.addEventListener("animationend", fireRandomStar);
+      fireRandomStar();
+    }
 
-    // 2. Calculate mouse position relative to center (-1 to 1)
-    const x = (e.clientX / innerWidth - 0.5) * 2;
-    const y = (e.clientY / innerHeight - 0.25) * 2;
+    if (title && !title.dataset.typewriterInit) {
+      title.dataset.typewriterInit = "true";
+      const text = title.textContent || "";
+      title.textContent = "";
 
-    // 3. Update CSS variables (multiply by max rotation degrees, e.g., 10)
-    title?.style.setProperty("--rot-x", `${y * -20}deg`);
-    title?.style.setProperty("--rot-y", `${x * 10}deg`);
+      let i = 0;
+      function typeWriter() {
+        if (i < text.length && title) {
+          title.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, Math.random() * 100 + 60);
+        }
+      }
+      setTimeout(typeWriter, 300);
+    }
+
+    if (hero && !hero.dataset.parallaxInit) {
+      hero.dataset.parallaxInit = "true";
+      hero.addEventListener("mousemove", (e) => {
+        // 1. Get the viewport dimensions
+        const { innerWidth, innerHeight } = window;
+
+        // 2. Calculate mouse position relative to center (-1 to 1)
+        const x = (e.clientX / innerWidth - 0.5) * 2;
+        const y = (e.clientY / innerHeight - 0.25) * 2;
+
+        // 3. Update CSS variables (multiply by max rotation degrees, e.g., 10)
+        title?.style.setProperty("--rot-x", `${y * -20}deg`);
+        title?.style.setProperty("--rot-y", `${x * 10}deg`);
+      });
+    }
   });
 </script>
 

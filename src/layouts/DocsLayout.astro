@@ -503,7 +503,8 @@ const description = frontmatter?.description || Astro.props.description;
 <script>
   const COLLAPSE_LINE_THRESHOLD = 12;
 
-  for (const pre of document.querySelectorAll(".docs-content pre")) {
+  document.addEventListener("astro:page-load", () => {
+    for (const pre of document.querySelectorAll(".docs-content pre")) {
     if (!(pre instanceof HTMLPreElement) || pre.querySelector(".code-copy-btn")) continue;
 
     const lang = pre.getAttribute("data-language");
@@ -611,6 +612,8 @@ const description = frontmatter?.description || Astro.props.description;
 
   for (const details of document.querySelectorAll("details.callout")) {
     if (!(details instanceof HTMLDetailsElement)) continue;
+    if (details.dataset.calloutInit) continue;
+    details.dataset.calloutInit = "true";
     const summary = details.querySelector(":scope > summary.callout-title");
     const content = details.querySelector(":scope > .callout-content");
     if (!(summary instanceof HTMLElement) || !(content instanceof HTMLElement)) continue;
@@ -654,4 +657,5 @@ const description = frontmatter?.description || Astro.props.description;
       content.style.marginTop = "";
     });
   }
+  });
 </script>

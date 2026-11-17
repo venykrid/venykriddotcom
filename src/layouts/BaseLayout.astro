@@ -1,5 +1,6 @@
 ---
 // Basic base layout
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 const {
   title,
@@ -27,6 +28,7 @@ const canonicalURL = Astro.site
     <meta property="og:url" content={canonicalURL} />
     <link rel="icon" href="/favicon.ico?v=3" />
     <title>{title}</title>
+    <ClientRouter />
   </head>
   <body>
     <main>

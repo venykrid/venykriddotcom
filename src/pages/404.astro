@@ -46,7 +46,7 @@ const fallbackCat = catUrls[0] ?? "";
   </section>
 </BaseLayout>
 
-<script is:inline define:vars={{ catUrls }}>
+<script is:inline data-astro-rerun define:vars={{ catUrls }}>
   const img = document.getElementById("cat-404");
   const btn = document.getElementById("another-cat");
 
