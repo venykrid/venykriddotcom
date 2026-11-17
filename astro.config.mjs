@@ -18,9 +18,12 @@ export default defineConfig({
             transformers: [shikiIndentGuides()],
         },
     },
+    server: {
+        host: true,
+    },
     vite: {
         server: {
-            allowedHosts: "gumball",
+            allowedHosts: true,
         }
     }
 });
