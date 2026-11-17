@@ -33,13 +33,15 @@ for f in *.mp3; do ffmpeg -i "$f" -c:a libvorbis "${f%.mp3}.ogg"; done
 Once your voice pack is done, push the new sounds onto the robot!
 
 ```bash
+# Run inside the folder where your .ogg files are located, replace VACUUM_IP with yours
 ssh VACUUM_IP mkdir -p /mnt/data/custom_sounds
-scp -O ./*.ogg root@10.0.68.167:/mnt/data/custom_sounds/
+scp -O ./*.ogg root@VACUUM_IP:/mnt/data/custom_sounds/
 ```
 
 Because the firmware is read-only and to reduce the risk of breaking anything, we will use a [bind mount](https://www.baeldung.com/linux/bind-mounts) to make the system sound folder point to our new custom folder we just pushed. This will not persist on restart (yet), so if something weird happens for any reason you _should_ be able to just reboot and it'll go back exactly how it was before.
 
 ```bash
+# SSH on the robot
 mount --bind /mnt/data/custom_sounds /mnt/resources/audio_custom/sounds
 ```
 
