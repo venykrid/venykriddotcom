@@ -180,6 +180,13 @@ navItems.sort((a, b) => a.label.localeCompare(b.label));
     color: white;
   }
 
+  .topnav.heroMode .nav-item:hover,
+  .topnav.heroMode .dropbtn:hover,
+  .topnav.heroMode .dropdown:hover > .dropbtn,
+  .topnav.heroMode .dropdown:focus-within > .dropbtn {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
   .home-link {
     height: 100%;
     display: block;
@@ -230,12 +237,21 @@ navItems.sort((a, b) => a.label.localeCompare(b.label));
     font-weight: 500;
     background: none;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     gap: 0.25rem;
     font-family: inherit;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-item:hover,
+  .dropbtn:hover,
+  .dropdown:hover > .dropbtn,
+  .dropdown:focus-within > .dropbtn {
+    background-color: var(--ctp-surface0);
   }
 
   .dropdown {
@@ -246,9 +262,10 @@ navItems.sort((a, b) => a.label.localeCompare(b.label));
   }
 
   .dropdown-content {
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    top: 80%;
+    top: 85%;
     left: 0;
     background-color: var(--ctp-mantle, #222);
     min-width: 200px;
@@ -257,11 +274,31 @@ navItems.sort((a, b) => a.label.localeCompare(b.label));
     border-radius: 12px;
     border: 1px solid var(--ctp-surface0, #444);
     padding: 0.5rem;
-    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform-origin: top center;
+    transform: translateY(-6px);
+    clip-path: inset(0 -20px 100% -20px round 12px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+      clip-path 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear 0.26s;
   }
 
-  .dropdown:hover .dropdown-content {
-    display: flex;
+  .dropdown:hover .dropdown-content,
+  .dropdown:focus-within .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    clip-path: inset(-8px -20px -24px -20px round 12px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+      clip-path 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear 0s;
   }
 
   .dropdown-content a {
@@ -270,7 +307,7 @@ navItems.sort((a, b) => a.label.localeCompare(b.label));
     text-decoration: none;
     display: block;
     border-radius: 8px;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
 
   .dropdown-content a:hover {
@@ -278,10 +315,11 @@ navItems.sort((a, b) => a.label.localeCompare(b.label));
   }
 
   .chevron {
-    transition: transform 0.2s;
+    transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .dropdown:hover .chevron {
+  .dropdown:hover .chevron,
+  .dropdown:focus-within .chevron {
     transform: rotate(180deg);
   }
 </style>

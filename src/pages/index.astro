@@ -10,7 +10,7 @@ import websiteImage from "../images/website.png";
 ---
 
 <BaseLayout title="venykrid.com" coverViewport={true}>
-  <Navbar heroMode={true}/>
+  <Navbar heroMode={true} />
   <section class="hero-container" id="hero">
     <Image src={mainHeroImage} alt="Northern lights" class="hero-image" />
     <div class="overlay"></div>
@@ -21,13 +21,14 @@ import websiteImage from "../images/website.png";
   </section>
   <div class="content-wrapper">
     <p>
-      My name is Zach and I'm a Freshman Computer Science student with a focus on security and reliability using modern
-      standards and attention to detail.
+      My name is Zach and I'm a Sophomore Computer Science student with a focus
+      on security and reliability using modern standards and attention to
+      detail.
     </p>
     <p>
-      This page serves as my spot to show off my personal projects and document what I've learned so that others <i>
-        (like you!)
-      </i> can learn from it and help try to make the world a better place through technology.
+      This page serves as my spot to show off my personal projects and document
+      what I've learned so that others <i> (like you!) </i> can learn from it and
+      help try to make the world a better place through technology.
     </p>
     <ProjectCard
       title="Home Lab"
@@ -38,12 +39,17 @@ import websiteImage from "../images/website.png";
     />
     <ProjectCard
       title="Website"
-      description="About this site and how I made it with Astro. I would reccomend copying this because it does make it really easy to make really quick and robust pages"
+      description="About this site and how I made it with Astro. I would recommend copying this because it does make it really easy to make really quick and robust pages"
       image={websiteImage}
       imageAlt="A screenshot of this page"
       link="docs/website"
     />
-    <p>Hero image by <a href="https://unsplash.com/photos/northern-lights-during-night-time-R3pUGn5YiTg">@marceloquinan on Unsplash</a></p>
+    <p>
+      Hero image by <a
+        href="https://unsplash.com/photos/northern-lights-during-night-time-R3pUGn5YiTg"
+        >@marceloquinan on Unsplash</a
+      >
+    </p>
   </div>
 </BaseLayout>
 
@@ -190,7 +196,11 @@ import websiteImage from "../images/website.png";
     position: absolute;
     width: 150px;
     height: 2px;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
     transform: rotate(-45deg);
     opacity: 0;
     z-index: 1; /* Changed to 1 so it appears above the image/overlay */
@@ -201,7 +211,8 @@ import websiteImage from "../images/website.png";
   }
 
   .shooting-star.animate {
-    animation: shoot var(--star-duration, 3s) linear var(--star-delay, 2s) forwards;
+    animation: shoot var(--star-duration, 3s) linear var(--star-delay, 2s)
+      forwards;
   }
 
   @keyframes shoot {
